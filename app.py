@@ -8,7 +8,7 @@ from langgraph.prebuilt import ToolNode, tools_condition
 
 
 llm = ChatOllama(
-    model="llama3",
+    model="qwen3",
     temperature=0
 )
 
@@ -68,6 +68,12 @@ tool_node = ToolNode(tools)
 
 def assistant(state: MessagesState):
 
+    team_context = ""
+    if os.path.exists("team_context.txt"):
+        with open("team_context.txt", "r", encoding="utf-8") as f:
+            team_context = f.read()
+    else:
+        team_context = "לא נמצא מידע נוסף על הצוות."
     system_message = """
     אתה ארכיאולוג קוד.
 
@@ -122,4 +128,5 @@ def run_agent(user_prompt: str):
 # ==========================
 
 if __name__ == "__main__":
+    print("Running agent with prompt: בדוק את שורה 5 בקובץ app.py")
     run_agent("בדוק את שורה 5 בקובץ app.py")
