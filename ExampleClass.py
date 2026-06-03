@@ -18,7 +18,18 @@ class Calculator:
     def power(self, a, b):
         return a ** b
 
-    def modulo(self, a, b):
+    def modulo(self, a, b):   
         if b == 0:
             raise ValueError("Cannot modulo by zero")
         return a % b
+ 
+        
+# Example usage:
+if __name__ == "__main__":  
+    calc = Calculator()
+    print(calc.add(5, 3))        # Output: 8
+    print(calc.subtract(5, 3))   # Output: 2
+    print(calc.multiply(5, 3))   # Output: 15
+    print(calc.divide(5, 3))     # Output: 1.6666666666666667
+    print(calc.power(5, 3))      # Output: 125
+    print(calc.modulo(5, 3))     # Output: 2
